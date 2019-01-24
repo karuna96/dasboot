@@ -82,7 +82,7 @@ public class ShipwreckController {
 		
 		AmazonS3Client s3Client = new AmazonS3Client();
 		InputLogEvent log = new InputLogEvent();
-        log.setMessage("Amazon S3 Client created!");
+        log.setMessage("Amazon S3 Client created!!!!");
         log.setTimestamp(System.currentTimeMillis());
         
 		ObjectMetadata md = new ObjectMetadata();
