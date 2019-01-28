@@ -33,7 +33,7 @@ import com.cg.repository.ShipwreckRepository;
 
 
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("/api/v1/")
 public class ShipwreckController {
 
 	@Autowired
@@ -70,7 +70,7 @@ public class ShipwreckController {
 		return existingShipwreck;
 	}
 	
-	@RequestMapping(value="shipwrecks", method = RequestMethod.POST)
+	@RequestMapping(value="/shipwrecks", method = RequestMethod.POST)
 	public Shipwreck post(@RequestBody Shipwreck wreck){
 //		ClientConfiguration clientConfig = new ClientConfiguration();
 //		clientConfig.setProtocol(Protocol.HTTPS);
