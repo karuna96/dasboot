@@ -6,6 +6,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated_tests"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources/public"/>
         <property name="context-root" value="Das-Boot-App"/>
         <property name="java-output-path" value="/das-boot/target/classes"/>
     </wb-module>
