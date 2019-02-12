@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-	public static final Logger logger =LogManager.getRootLogger();
+	public static final Logger logger =LogManager.getLogger(HomeController.class);
 	
 	@RequestMapping("/")
 	public String home() {
