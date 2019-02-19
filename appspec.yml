@@ -1,5 +1,0 @@
-version: 0.0
-os: linux
-files:
-  - source: /target/SampleMavenTomcatApp.war
-    destination: /tmp/codedeploy-deployment-staging-area/
