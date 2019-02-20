@@ -10,5 +10,5 @@ phases:
 	  - mvn package
 artifacts:
   files:
-    - target/Das-Boot-App.jar
+    - /target/Das-Boot-App.jar
     - appspec.yml
