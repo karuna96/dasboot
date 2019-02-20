@@ -11,7 +11,7 @@ pre_build:
 commands:
 - echo This is pre_build
 build:
-commands
+commands:
 - echo Starting build `date`
 - mvn clean package
 post_build:
@@ -19,5 +19,5 @@ commands:
 - echo Build completed on `date`
 artifacts:
 files:
-- target/messageUtil-1.0.jar
+- target/Das-Boot-App.jar
 discard-paths: yes
