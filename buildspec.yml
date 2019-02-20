@@ -14,11 +14,11 @@ phases:
       - echo This is pre_build
   build:
     commands:
-      - echo Starting build `date`
+      - echo Starting build 'date'
       - mvn clean package
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Build completed on 'date'
 artifacts:
   files:
     - target/Das-Boot-App.jar
