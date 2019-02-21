@@ -20,13 +20,13 @@ phases:
       - mvn clean package
       - echo Build started on 'date'
       - echo Building the Docker image...          
-      - docker build -t dasbootregistry:latest .
-      - docker tag dasbootregistry:latest 080204196416.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
+      - sudo docker build -t dasbootregistry:latest .
+      - sudo docker tag dasbootregistry:latest 080204196416.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
   post_build:
     commands:
       - echo Build completed on 'date'
       - echo Pushing the Docker image...
-      - docker push dasbootregistry:latest 080204196416.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
+      - sudo docker push dasbootregistry:latest 080204196416.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
 artifacts:
   files:
     - target/Das-Boot-App.jar
