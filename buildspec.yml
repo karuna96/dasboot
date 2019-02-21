@@ -11,7 +11,7 @@ phases:
       - apt-get install -y maven
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
-      - sudo dockerd -H tcp://localhost:2375 -H unix:///var/run/docker.sock &
+      - sudo dockerd -H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock &
   pre_build:
     commands:
       - echo This is pre_build
