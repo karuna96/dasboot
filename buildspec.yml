@@ -11,7 +11,7 @@ phases:
       - apt-get install -y maven
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
-      - sudo service docker start
+      - sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
   pre_build:
     commands:
       - echo This is pre_build
