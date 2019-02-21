@@ -17,6 +17,7 @@ phases:
       - echo This is pre_build
       - echo Logging in to Amazon ECR...
       - aws ecr get-login --no-include-email --region us-east-1
+      - export MAVEN_OPTS='-Xmx512m -XX:MaxPermSize=128m'
   build:
     commands:
       - echo Starting build 'date'
