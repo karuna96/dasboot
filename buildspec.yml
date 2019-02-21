@@ -9,6 +9,8 @@ phases:
       - apt-get update -y
       - apt-get install -y openjdk-8-jdk
       - apt-get install -y maven
+      - sudo apt-get install curl -y
+      - curl -sSL https://get.docker.com/ | sh
       - sudo service docker start
   pre_build:
     commands:
