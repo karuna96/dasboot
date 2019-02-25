@@ -21,7 +21,7 @@ phases:
       - echo Build started on 'date'
       - echo Building the Docker image...
       - sudo docker -v
-      - sudo service docker restart
+      - sudo systemctl start docker
       - sudo dockerd
       - sudo docker run hello-world
       - mvn install 
