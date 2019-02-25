@@ -1,40 +1,28 @@
 version: 0.2
-
 phases:
   install:
     commands:
-      - apt-get update -y
-      - apt-get install -y software-properties-common
-      - add-apt-repository ppa:openjdk-r/ppa
-      - apt-get update -y
-      - apt-get install -y openjdk-8-jdk
-      - apt-get install -y maven 
-      - sudo apt-get install curl -y
-      - curl -sSL https://get.docker.com/ | sh
-      - apt-get update -y
+      - echo install step...
   pre_build:
     commands:
-      - echo This is pre_build
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login --no-include-email --region us-east-1
-      - export MAVEN_OPTS='-Xmx512m -XX:MaxPermSize=128m'
+      - aws --version
+      - export _DOCKER_REPO="$(aws ecr get-authorization-token --output text  --query 'authorizationData[].proxyEndpoint')"
+      - eval 'aws ecr get-login --no-include-email --region us-east-1 '
+      - REPOSITORY_URI=889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - echo $IMAGE_TAG
   build:
     commands:
-      - echo Starting build 'date'
-      - echo Build started on 'date'
-      - echo Building the Docker image...
-      - sudo docker -v
-      - sudo service docker start
-      - sudo docker run hello-world
-      - mvn install 
-      - sudo docker build -t dasbootregistry:latest .
-      - sudo docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
+      - echo build Docker image on 'date'
+      - echo Starting Java Build...
+      - mvn install -DpushImageTag
+      - Dockerfile:build -DpushImageTag
   post_build:
     commands:
-      - echo Build completed on 'date'
-      - echo Pushing the Docker image...
-      - sudo docker push dasbootregistry:latest 
-      - sudo service docker stop
+      - echo Writing image definitions file...
+      - echo $REPOSITORY_URI
+      - echo $IMAGE_TAG
 artifacts:
   files:
     - target/Das-Boot-App.jar
