@@ -11,6 +11,7 @@ phases:
       - apt-get install -y maven 
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
+      - sudo yum update -y
       - sudo dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
       - sudo usermod -aG docker ec2-user
   pre_build:
