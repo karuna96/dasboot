@@ -1,29 +1,11 @@
 version: 0.2
 phases:
-  install:
-    commands:
-      - echo install step...
-  pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
-      - aws --version
-      - export _DOCKER_REPO="$(aws ecr get-authorization-token --output text  --query 'authorizationData[].proxyEndpoint')"
-      - eval 'aws ecr get-login --no-include-email --region us-east-1 '
-      - REPOSITORY_URI=889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry
-      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - echo $IMAGE_TAG
   build:
     commands:
-      - echo build Docker image on 'date'
-      - echo Starting Java Build...
-      - mvn install -DpushImageTag
-      - sudo docker build -t dasbootregistry:latest .
+      - docker build -t dasbootregistry .
+     
   post_build:
     commands:
-      - echo Writing image definitions file...
-      - echo $REPOSITORY_URI
-      - echo $IMAGE_TAG
-artifacts:
-  files:
-    - target/Das-Boot-App.jar
-discard-paths: yes
+      - eval 'aws ecr get-login --region us-east-1'
+      - docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
+      - docker push 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest 
