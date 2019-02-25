@@ -11,7 +11,7 @@ phases:
       - apt-get install -y maven
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
-      - sudo docker run --privileged dasbootregistry:latest
+      - sudo docker run -v /var/run/docker.sock:/var/run/docker.sock dasbootregistry:latest
       - sudo dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
       - sudo usermod -aG docker ec2-user
   pre_build:
