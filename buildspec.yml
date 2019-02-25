@@ -3,6 +3,7 @@ version: 0.1
 phases:
   build:
     commands:
+      - dockerd
       - docker build -f Dockerfile -t dasbootregistry .
       - docker images
   post_build:
