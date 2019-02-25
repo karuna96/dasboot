@@ -95,7 +95,7 @@ public class ShipwreckController {
         String key="Object" + k;
         k++;
         
-		PutObjectRequest putRequest1=new PutObjectRequest("shipwreck-bucket", key,greetingIS,md );
+		PutObjectRequest putRequest1=new PutObjectRequest("shipwreck-bucket1", key,greetingIS,md );
 		PutObjectResult putResult1=s3Client.putObject(putRequest1);
 		InputLogEvent log1 = new InputLogEvent();
         log1.setMessage("S3 Client request sent to aws.amazon.com!!!!");
