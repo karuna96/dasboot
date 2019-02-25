@@ -12,7 +12,7 @@ phases:
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
       - sudo service docker stop
-      - sudo dockerd -H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock &
+      - sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
   pre_build:
     commands:
       - echo This is pre_build
