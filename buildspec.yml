@@ -12,7 +12,6 @@ phases:
       - sudo apt-get install curl -y
       - curl -sSL https://get.docker.com/ | sh
       - apt-get update -y
-      - sudo usermod -aG docker ec2-user
   pre_build:
     commands:
       - echo This is pre_build
