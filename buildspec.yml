@@ -17,7 +17,7 @@ phases:
       - echo build Docker image on 'date'
       - echo Starting Java Build...
       - mvn install -DpushImageTag
-      - Dockerfile:build -DpushImageTag
+      - sudo docker build -t dasbootregistry:latest .
   post_build:
     commands:
       - echo Writing image definitions file...
