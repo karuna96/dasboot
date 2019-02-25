@@ -3,6 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
+      - sudo groupadd docker
       - sudo usermod -aG docker ${USER}
       - docker build -f Dockerfile -t dasbootregistry .
       - docker images
