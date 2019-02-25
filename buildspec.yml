@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       - sudo groupadd docker
-      - sudo usermod -aG docker ${USER}
+      - sudo usermod -aG docker ec2-user
       - docker build -f Dockerfile -t dasbootregistry .
       - docker images
   post_build:
