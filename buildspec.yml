@@ -24,7 +24,7 @@ phases:
       - echo Build started on 'date'
       - echo Building the Docker image...
       - sudo docker -v
-      - sudo service docker.io start
+      - sudo service docker start
       - sudo docker run hello-world
       - mvn install 
       - sudo docker build -t dasbootregistry:latest .
