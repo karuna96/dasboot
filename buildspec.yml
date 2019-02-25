@@ -24,7 +24,7 @@ phases:
       - sudo dockerd
       - sudo docker run hello-world
       - mvn install 
-      - sudo dockerd -D
+      - sudo service docker restart
       - sudo docker build -t dasbootregistry:latest .
       - sudo docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
   post_build:
