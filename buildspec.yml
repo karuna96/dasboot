@@ -21,10 +21,10 @@ phases:
       - echo Build started on 'date'
       - echo Building the Docker image...
       - sudo docker -v
+      - sudo service docker restart
       - sudo dockerd
       - sudo docker run hello-world
       - mvn install 
-      - sudo service docker restart
       - sudo docker build -t dasbootregistry:latest .
       - sudo docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
   post_build:
