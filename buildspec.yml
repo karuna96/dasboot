@@ -8,7 +8,11 @@ phases:
       - add-apt-repository ppa:openjdk-r/ppa
       - apt-get update -y
       - apt-get install -y openjdk-8-jdk
-      - apt-get install -y maven
+      - apt-get install -y maven 
+      - sudo apt-get install curl -y
+      - curl -sSL https://get.docker.com/ | sh
+      - sudo dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+      - sudo usermod -aG docker ec2-user
   pre_build:
     commands:
       - echo This is pre_build
@@ -21,8 +25,7 @@ phases:
       - echo Build started on 'date'
       - echo Building the Docker image...
       - sudo docker -v
-      - sudo systemctl start docker
-      - sudo dockerd
+      - sudo service docker start
       - sudo docker run hello-world
       - mvn install 
       - sudo docker build -t dasbootregistry:latest .
