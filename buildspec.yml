@@ -3,6 +3,7 @@ version: 0.1
 phases:
   build:
     commands:
+      - sudo systemctl start docker
       - docker build -t dasbootregistry .
      
   post_build:
