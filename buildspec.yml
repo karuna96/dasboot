@@ -21,6 +21,7 @@ phases:
       - echo Build started on 'date'
       - echo Building the Docker image...
       - mvn install 
+      - sudo dockerd -D
       - sudo docker build -t dasbootregistry:latest .
       - sudo docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
   post_build:
