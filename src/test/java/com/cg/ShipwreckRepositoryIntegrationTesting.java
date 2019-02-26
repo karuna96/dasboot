@@ -22,36 +22,36 @@ import com.cg.repository.ShipwreckRepository;
 @SpringBootTest(classes=App.class)
 public class ShipwreckRepositoryIntegrationTesting {
 
-	@Autowired
-	private ShipwreckRepository shipwreckRepository;
+// 	@Autowired
+// 	private ShipwreckRepository shipwreckRepository;
 	
-	@Test
-	public void testFindAll() {
-		List<Shipwreck> wrecks=shipwreckRepository.findAll();
-		assertThat(wrecks.size(),is(greaterThanOrEqualTo(0)));
-	}
+// 	@Test
+// 	public void testFindAll() {
+// 		List<Shipwreck> wrecks=shipwreckRepository.findAll();
+// 		assertThat(wrecks.size(),is(greaterThanOrEqualTo(0)));
+// 	}
 	
-	@Test
-	public void testFindOne() {
-		Shipwreck wreck=shipwreckRepository.getOne(65L);
-		assertThat(wreck.getId().longValue(), is(65L));
-	}
+// 	@Test
+// 	public void testFindOne() {
+// 		Shipwreck wreck=shipwreckRepository.getOne(65L);
+// 		assertThat(wreck.getId().longValue(), is(65L));
+// 	}
 	
-	@Test
-	public void testCreate() {
-		Shipwreck a = new Shipwreck(1L, "U869", "A very deep German UBoat", "FAIR", 200, 44.12, 138.44, 1994);
-		Shipwreck result=shipwreckRepository.saveAndFlush(a);
+// 	@Test
+// 	public void testCreate() {
+// 		Shipwreck a = new Shipwreck(1L, "U869", "A very deep German UBoat", "FAIR", 200, 44.12, 138.44, 1994);
+// 		Shipwreck result=shipwreckRepository.saveAndFlush(a);
 		
-		assertNotNull(result);
-	}
+// 		assertNotNull(result);
+// 	}
 	
-	@Test
-	public void testDelete() {
+// 	@Test
+// 	public void testDelete() {
 		
-		shipwreckRepository.deleteById(1L);
-		Shipwreck result=shipwreckRepository.getOne(1L);
-		System.out.println(result);
-		verify(shipwreckRepository,times(1)).deleteById(1L);
-		assertNull(result);
-	}
+// 		shipwreckRepository.deleteById(1L);
+// 		Shipwreck result=shipwreckRepository.getOne(1L);
+// 		System.out.println(result);
+// 		verify(shipwreckRepository,times(1)).deleteById(1L);
+// 		assertNull(result);
+// 	}
 }
