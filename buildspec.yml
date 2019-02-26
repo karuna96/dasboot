@@ -4,7 +4,7 @@ phases:
   pre_build:
     commands:
       - echo Logging into Amazon ECR
-      - eval 'aws ecr get-login | sed 's|https://||' --no-include-email --region us-east-1 '
+      - eval 'aws ecr get-login --no-include-email | sed 's|https://||' --region us-east-1 '
   build:
     commands:
       - echo Build start on 'date'
