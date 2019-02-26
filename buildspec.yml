@@ -4,15 +4,10 @@ phases:
   pre_build:
     commands:
       - echo Logging into Amazon ECR
-      - sudo apt-get install software-properties-common
-      - sudo apt-add-repository universe
-      - sudo apt-get update
-      - sudo apt-get install -y maven
       - eval 'aws ecr get-login --region us-east-1'
   build:
     commands:
       - echo Build start on 'date'
-      - mvn clean package
       - echo Building the docker image
       - docker build -t dasbootregistry .
       - docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
