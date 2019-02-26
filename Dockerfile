@@ -1,10 +1,8 @@
+FROM maven:3.6-jdk-8 as build
+WORKDIR /app
+RUN mvn install
+
 FROM openjdk:8
-RUN \
-  apt-get install software-properties-common
-  apt-add-repository universe
-  apt-get update
-  apt-get install -y maven
-  mvn clean package
-ADD target/Das-Boot-App.jar dasbootregistry.jar
-EXPOSE 8085
-ENTRYPOINT [ "java", "-jar ", "dasbootregistry.jar" ]
+WORKDIR /app
+COPY --from=build /app/target/Das-Boot-App.jar /app
+CMD ["java -jar Das-Boot-App.jar"]
