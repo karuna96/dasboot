@@ -8,6 +8,7 @@ phases:
   build:
     commands:
       - echo Build start on 'date'
+      - mvn clean package
       - echo Building the docker image
       - docker build -t dasbootregistry .
       - docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
