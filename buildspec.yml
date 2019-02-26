@@ -1,14 +1,18 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - echo Logging into Amazon ECR
+      - eval 'aws ecr get-login --region us-east-1'
   build:
     commands:
-      - sudo groupadd docker
-      - sudo usermod -aG docker user
-      - docker build -f Dockerfile -t dasbootregistry .
-      - docker images
+      - echo Build start on 'date'
+      - echo Building the docker image
+      - docker build -t dasbootregistry .
+      - docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
   post_build:
     commands:
-      - eval 'aws ecr get-login --region us-east-1'
-      - docker tag dasbootregistry:latest 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest
+      - echo Build completed on 'date'
+      - echo pushing the docker image
       - docker push 889894765174.dkr.ecr.us-east-1.amazonaws.com/dasbootregistry:latest 
